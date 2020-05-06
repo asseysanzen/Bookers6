@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
     @newbook = Book.new
     @book_comment = BookComment.new
+    # @comments = BookComments.where(params[:id])
     @favorite = Favorite.new
   end
 
@@ -29,8 +30,6 @@ class BooksController < ApplicationController
   def edit
   	@book = Book.find(params[:id])
   end
-
-
 
   def update
   	@book = Book.find(params[:id])
@@ -58,6 +57,10 @@ class BooksController < ApplicationController
 
   def book_params
   	params.require(:book).permit(:title, :body)
+  end
+
+  def book_comment_params
+    params.require(:book_comment).permit(:comment)
   end
 
   def correct_user
