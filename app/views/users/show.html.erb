@@ -4,6 +4,8 @@
 <h2>User info</h2>
 <%= render 'users/profile', current_user: @user %>
 <!--同コントローラーのviewで表示ならusersは省略可 -->
+<%= render 'stats' %>
+<%= render 'follow_form' %>
 
 <h2>New book</h2>
 <%= render 'books/newform', book: @book %>
