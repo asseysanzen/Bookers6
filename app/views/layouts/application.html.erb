@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers3</title>
+    <title>Bookers5</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,8 +15,18 @@
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
-          <span>Bookers</span>
+          <h2>Bookers</h2>
         </nav>
+        <% if user_signed_in? %>
+        <nav class="search_form">
+        <%= form_tag ({controller: :searches, action: :search}) do %>
+        <%= text_field_tag :search %>
+        <%= select_tag(:option, options_for_select([["user", "1"],["book", "2"]])) %>
+        <%= select_tag(:choice, options_for_select([["完全一致", "1" ],["部分一致", "2" ],["前方一致", "3" ],["後方一致", "4" ]])) %>
+        <%= submit_tag ("Search") , class: 'search-btn'%>
+        <% end %>
+        </nav>
+        <% end %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
